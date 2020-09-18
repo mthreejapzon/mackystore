@@ -1,0 +1,7 @@
+<% if admin_signed_in? %>
+  Hello, <%= current_admin.email %>!
+  <br />
+  <%= link_to 'Sign Out', destroy_admin_session_path,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+<% end %>
