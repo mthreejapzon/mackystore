@@ -1,22 +1,27 @@
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
- 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
- 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
- 
-<p>
-  <strong>Quantity:</strong>
-  <%= @product.quantity %>
-</p>
+<div class="card text-center mx-auto mt-5" style="width: 18rem;">
+  <p>
+    <strong>Name:</strong>
+    <%= @product.name %>
+  </p>
+  
+  <p>
+    <strong>Price:</strong>
+    <%= @product.price %>
+  </p>
+  
+  <p>
+    <strong>Description:</strong>
+    <%= @product.description %>
+  </p>
+  
+  <p>
+    <strong>Quantity:</strong>
+    <%= @product.quantity %>
+  </p>
 
-<%= link_to 'Edit', edit_admin_product_path(@product) %>
-<%= link_to 'Back', admin_products_path %>
+  <p>
+    <%= image_tag(@product.image_url, width: '100px', height: '100px') if @product.image? %>
+  </p>
+  <%= link_to 'Edit', edit_admin_product_path(@product), class: 'btn btn-warning' %>
+  <%= link_to 'Back', admin_products_path, class: 'btn btn-primary'%>
+</div>

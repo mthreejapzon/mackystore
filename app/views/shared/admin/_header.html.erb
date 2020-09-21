@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to 'Admin Control Panel', admin_products_path, class: 'navbar-brand'%>
+  <%= link_to 'Product Listing', admin_products_path, class: 'nav-link'%>
+  <a class="nav-link" href="#">Blog Listing</a>
+
+  <% if admin_signed_in? %>
+    <div class="text-white navbar-nav ml-auto">  
+        Hello, <%= current_admin.full_name %>!
+        <br />
+        <%= link_to 'Sign Out', destroy_admin_session_path,
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' }, class: 'ml-2' %>
+    </div>
+  <% end %>
+</nav>
