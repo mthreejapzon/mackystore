@@ -19,7 +19,7 @@
       <td><%= product.name %></td>
       <td><%= product.price %></td>
       <td><%= product.description %></td>
-      <td><%= product.type&.demodulize %></td>
+      <td><%= product.product_type&.name %></td>
       <td><%= product.product_sizes.map(&:name).join(", ") %></td>
       <td>
         <%= link_to 'Show', admin_product_path(product), class: 'btn btn-primary'%>

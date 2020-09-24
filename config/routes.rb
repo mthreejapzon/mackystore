@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :products
     resources :product_sizes
     resources :product_quantities
+    resources :product_types
   end
 
   root 'home#index'

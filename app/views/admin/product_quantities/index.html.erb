@@ -15,7 +15,7 @@
   <% @product_quantities.each do |p| %>
     <tr>
       <td><%= p.product.name %></td>
-      <td><%= p.product.type&.demodulize %></td>
+      <td><%= p.product.product_type&.name %></td>
       <td><%= p.product.description %></td>
       <td><%= p.product_size.name %></td>
       <td><%= p.quantity %></td>
