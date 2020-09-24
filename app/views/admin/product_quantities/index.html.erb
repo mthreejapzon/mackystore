@@ -1,0 +1,27 @@
+<h1>Product Quantity</h1> 
+<br />
+<br />
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Size</th>
+    <th>Quantity</th>
+    <th></th>
+  </tr>
+ 
+  <% @product_quantities.each do |p| %>
+    <tr>
+      <td><%= p.product.name %></td>
+      <td><%= p.product.type&.demodulize %></td>
+      <td><%= p.product.description %></td>
+      <td><%= p.product_size.name %></td>
+      <td><%= p.quantity %></td>
+      <td>
+       <%= link_to 'Edit', edit_admin_product_quantity_path(p), class: 'btn btn-warning'%>
+      </td>
+    </tr>
+  <% end %>
+</table>  

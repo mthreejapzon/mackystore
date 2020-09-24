@@ -13,10 +13,10 @@
     <strong>Description:</strong>
     <%= @product.description %>
   </p>
-  
+
   <p>
-    <strong>Quantity:</strong>
-    <%= @product.quantity %>
+    <strong>Type:</strong>
+    <%= @product.type&.demodulize %>
   </p>
 
   <p>

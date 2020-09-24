@@ -1,0 +1,26 @@
+<h1>Product Sizes Listing</h1>
+ 
+<%= link_to 'New Product Size', new_admin_product_size_path , class: 'btn btn-primary ml-3'%>
+<br />
+<br />
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+ 
+  <% @products_sizes.each do |product_sizes| %>
+    <tr>
+      <td><%= product_sizes.name %></td>
+      <td>
+        <%= link_to 'Show', admin_product_size_path(product_sizes), class: 'btn btn-primary'%>
+        <%= link_to 'Edit',  edit_admin_product_size_path(product_sizes), class: 'btn btn-warning'%>
+        <%= link_to 'Destroy', admin_product_size_path(product_sizes),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, 
+                class: 'btn btn-danger'%>
+      </td>
+    </tr>
+  <% end %>
+</table>  

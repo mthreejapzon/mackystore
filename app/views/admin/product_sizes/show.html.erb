@@ -1,0 +1,9 @@
+<div class="card text-center mx-auto mt-5" style="width: 18rem;">
+  <p>
+    <strong>Name:</strong>
+    <%= @product_size.name %>
+  </p>
+  
+  <%= link_to 'Edit', edit_admin_product_size_path(@product_size), class: 'btn btn-warning' %>
+  <%= link_to 'Back', admin_product_sizes_path, class: 'btn btn-primary'%>
+</div>
