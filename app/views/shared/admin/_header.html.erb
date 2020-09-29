@@ -1,10 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <%= link_to 'Admin Control Panel', admin_products_path, class: 'navbar-brand'%>
-  <%= link_to 'Product', admin_products_path, class: 'nav-link'%>
-  <%= link_to 'Product Sizes', admin_product_sizes_path, class: 'nav-link'%>
-  <%= link_to 'Product Quantities',   admin_product_quantities_path, class: 'nav-link'%>
-  <%= link_to 'Product Types',   admin_product_types_path, class: 'nav-link'%>
-  <a class="nav-link" href="#">Blog Listing</a>
+  <%= link_to 'Admin Control Panel', admin_products_path, class: 'navbar-brand' %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <%= link_to 'Products', '#',
+          class: 'nav-link dropdown-toggle',
+          role: "button",
+          data: { toggle: "dropdown" },
+          aria: { haspopup: "true", expanded: "false" } %>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to 'All Products Listing', admin_products_path, class: 'dropdown-item' %>
+          <%= link_to 'Product Sizes', admin_product_sizes_path, class: 'dropdown-item' %>
+          <%= link_to 'Product Quantities', admin_product_quantities_path, class: 'dropdown-item' %>
+          <%= link_to 'Product Types', admin_product_types_path, class: 'dropdown-item' %>
+        </div>
+      </li>
+
+      <li class="nav-item active">
+        <%= link_to 'Blog', admin_blogs_path, class: 'nav-link'%>
+      </li>
+    </ul>
+  </div>
+
+  
 
   <% if admin_signed_in? %>
     <div class="text-white navbar-nav ml-auto">  

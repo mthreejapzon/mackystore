@@ -1,0 +1,30 @@
+<h1>Blog Listing</h1>
+ 
+<%= link_to 'New Blog', new_admin_blog_path , class: 'btn btn-primary ml-3'%>
+<br />
+<br />
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Slug</th>
+    <th></th>
+  </tr>
+ 
+  <% @blogs.each do |blog| %>
+    <tr>
+      <td><%= blog.title %></td>
+      <td><%= blog.author %></td>
+      <td><%= blog.slug %></td>
+      <td>
+        <%= link_to 'Show', admin_blog_path(blog), class: 'btn btn-primary'%>
+        <%= link_to 'Edit',  edit_admin_blog_path(blog), class: 'btn btn-warning'%>
+        <%= link_to 'Destroy', admin_blog_path(blog),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, 
+                class: 'btn btn-danger'%>
+      </td>
+    </tr>
+  <% end %>
+</table>  

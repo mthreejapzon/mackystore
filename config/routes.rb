@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :product_sizes
     resources :product_quantities
     resources :product_types
+    resources :blogs
   end
 
   root 'home#index'

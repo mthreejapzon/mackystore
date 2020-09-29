@@ -1,0 +1,28 @@
+<div class="card text-center mx-auto mt-5">
+  <p>
+    <strong>Name:</strong>
+    <%= @blog.title %>
+  </p>
+
+  <p>
+    <strong>Author:</strong>
+    <%= @blog.author %>
+  </p>
+
+  <p>
+    <strong>Slug:</strong>
+    <%= @blog.slug %>
+  </p>
+  
+  <p>
+    <strong>Content:</strong>
+    <%= @blog.text %>
+  </p>
+
+  <p>
+    <%= image_tag(@blog.image_url, width: '100px', height: '100px') if @blog.image? %>
+  </p>
+
+  <%= link_to 'Edit', edit_admin_blog_path(@blog), class: 'btn btn-warning' %>
+  <%= link_to 'Back', admin_blogs_path, class: 'btn btn-primary'%>
+</div>
