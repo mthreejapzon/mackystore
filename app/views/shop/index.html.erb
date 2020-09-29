@@ -1,0 +1,19 @@
+<div class="jumbotron jumbotron-fluid hero-image-container">
+  <div class="container">
+    <h1 class="display-4"> BRAND NAME</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+
+<div class="container">
+  <h1 class="display-4 text-center"> PRODUCTS </h1>
+
+  <% @product_types.each do |product_type| %> 
+    <div class="row">
+      <td><%= product_type.name %></td>
+
+      
+       <%= link_to 'Show', shop_show_path(product_type.name), class: 'btn btn-primary'%>
+    </div>
+  <% end %>
+</div>
