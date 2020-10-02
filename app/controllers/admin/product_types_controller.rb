@@ -12,9 +12,9 @@ class Admin::ProductTypesController < Admin::BaseController
   end
 
   def create
-    @product_types = ProductType.new(product_types_params)
+    @product_type = ProductType.new(product_type_params)
  
-    if @product_types.save
+    if @product_type.save
       redirect_to admin_product_types_path, notice: "Product size successfully created"
     else
       render "new"
@@ -22,23 +22,23 @@ class Admin::ProductTypesController < Admin::BaseController
   end
 
   def update
-    @product_types = ProductType.find(params[:id])
+    @product_type = ProductType.find(params[:id])
    
-    if @@product_types.update(product_types_params)
-      redirect_to admin_product_type_path, notice: "Product size successfully updated"
+    if @product_type.update(product_type_params)
+      redirect_to admin_product_types_path, notice: "Product size successfully updated"
     else
       render 'edit'
     end
   end
 
   def destroy
-    @product_types = ProductType.find(params[:id])
-    @product_types.destroy
+    @product_type = ProductType.find(params[:id])
+    @product_type.destroy
     redirect_to admin_product_types_path, notice: "Product size successfully deleted"
   end
 
   private
-  def product_types_params
-    params.require(:product_type).permit(:name)
+  def product_type_params
+    params.require(:product_type).permit(:name, :image)
   end
 end

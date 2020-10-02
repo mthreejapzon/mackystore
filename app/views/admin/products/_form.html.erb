@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-6 offset-3">
-    <%= form_with scope: :product, url: url, method: method, class: 'form-group text-center mt-5', local: true do |form| %>
+    <%= form_with model: @product, url: url, method: method, class: 'form-group text-center mt-5', local: true do |form| %>
       <% if @product.errors.any? %>
         <div id="error_explanation">
           <h2>
@@ -40,10 +40,11 @@
         <%= form.collection_select :product_size_ids, ProductSize.all, :id, :name, { include_blank: false }, { class: "form-control", multiple: true } %>
       </p>
 
-
       <p>
         <%= form.label :image %><br>
+        <%= form.hidden_field :image, value: form.object.image.identifier %>
         <%= form.file_field :image, class: 'form-control'%>
+        
       </p>
 
       <p>

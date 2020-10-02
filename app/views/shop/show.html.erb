@@ -1,3 +1,7 @@
-<% @product_type.products.each do |product| %>
-  <%= product.name %>
-<% end %>
+<div class="card text-center mx-auto mt-5" style="width: 18rem;">
+  <% @product_type.products.each do |product| %>
+    <div class="card">
+      <%= product.name %> 
+    </div>
+  <% end %>
+</div>

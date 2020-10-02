@@ -1,19 +1,17 @@
-<div class="jumbotron jumbotron-fluid hero-image-container">
-  <div class="container">
-    <h1 class="display-4"> BRAND NAME</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-  </div>
-</div>
+<div class="container-fluid">
+  <h1 class="display-4 text-center mb-5"> COLLECTION </h1>
 
-<div class="container">
-  <h1 class="display-4 text-center"> PRODUCTS </h1>
-
-  <% @product_types.each do |product_type| %> 
+  <% @product_types.in_groups_of(3, false).each do |product_types| %>
     <div class="row">
-      <td><%= product_type.name %></td>
-
-      
-       <%= link_to 'Show', shop_show_path(product_type.name), class: 'btn btn-primary'%>
+      <% product_types.each do |product_type| %>
+        <div class="card bg-dark text-white mx-auto mb-2 col-3">
+        <%= image_tag(product_type.image_url, class: 'card-img') if product_type.image? %>
+          <div class="card-img-overlay text-center">
+            <%= product_type.name %> <br/>
+            <%= link_to 'Show', shop_show_path(product_type.name), class: 'badge text-white'%>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>

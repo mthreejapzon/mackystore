@@ -1,0 +1,29 @@
+<div class="container">
+  <h1 class="display-4 text-center">Blogs</h1>
+  <div class="card mb-3">
+  <%= image_tag(@featured_blog.image_url, class: 'card-img-top') if @featured_blog.image? %>
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to @featured_blog.title, blog_show_path(@featured_blog.slug) %></h5>
+    <p class="card-text"><%= @featured_blog.text %></p>
+    <p class="card-text"><small class="text-muted"><%= @featured_blog.created_at.strftime('%B %d, %Y') %></small></p>
+  </div>
+</div>
+
+  <% @other_blogs.in_groups_of(3, false).each do |blogs| %>
+    <div class="row">
+      <% blogs.each do |blog| %>
+        <div class="card mx-auto" style="width: 18rem;">
+        <%= image_tag(blog.image_url, class: 'card-img-top') if blog.image? %>
+          <div class="card-body text-center">
+              <td><small><%= blog.created_at.strftime('%B %d, %Y') %></small></td> <br />
+              <td><%= link_to blog.title , blog_show_path(blog.slug) %></td> <br />
+              <td><%= blog.author %></td> <br />
+              
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+

@@ -22,5 +22,10 @@
     <%= form.submit class: 'btn btn-success' %>
   </p>
 
+  <p>
+    <%= form.label :image %><br>
+    <%= form.file_field :image, class: 'form-control'%>     
+  </p>
+
   <%= link_to 'Back', admin_product_types_path, class: 'btn btn-warning'%>
 <% end %>
