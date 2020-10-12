@@ -21,14 +21,8 @@
     <small>PRODUCT BRAND</small>
     <h1><%= @product.name %></h1>
     <p>₱ <%= @product.price %></p>
-
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= @product.product_sizes.name %>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <button class="dropdown-item" type="button"><%= @product.product_sizes.name %></button>
-      </div>
-    </div>
+    <p>
+      <%= collection_select :product_size, :id, @product.product_sizes, :id, :name, { include_blank: false }, { class: "form-control" } %>
+    </p>
   </div>
 </div>
