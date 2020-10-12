@@ -1,29 +1,33 @@
-<div class="jumbotron jumbotron-fluid hero-image-container">
-  <div class="container">
-    <h1 class="display-4"> BRAND NAME</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+<%= content_for :slider do %>
+  <div class="jumbotron jumbotron-fluid hero-image-container">
+    <div class="container">
+      <h1 class="display-4"> BRAND NAME</h1>
+      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
   </div>
-</div>
+<% end %>
 
-<div class="container">
-  <h1 class="display-4 text-center"> PRODUCTS </h1>
+<h1 class="display-4 text-center"> PRODUCTS </h1>
 
-  <% @products.in_groups_of(4, false).each do |products| %> 
-    <div class="row">
-      <% products.each do |product| %>
-        <div class="col-3">
-          <div class="card mb-5">
-            <%= image_tag(product.image_url, class: 'card-img-top') if product.image? %>
-            <div class="card-body">
-              <tr>
-                <td><%= product.name %></td>
+<% @products.in_groups_of(4, false).each do |products| %> 
+  <div class="row">
+    <% products.each do |product| %>
+      <div class="col-3">
+        <div class="card mb-5">
+          <%= image_tag(product.images.first&.url, class: 'card-img-top') if product.images.first&.present? %>
+          <div class="card-body align-self-center text-center">
+            <tr>
+              <td><%= product.name %></td>
+              <div class="w-100">
                 <td><%= product.price %></td>
+              </div>
+              <div class="w-100">
                 <a href="#" class="btn btn-primary">See Product</a>
-              </tr>
-            </div>
+              </div>
+            </tr>
           </div>
         </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

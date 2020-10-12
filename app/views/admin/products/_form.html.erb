@@ -42,9 +42,10 @@
 
       <p>
         <%= form.label :image %><br>
-        <%= form.hidden_field :image, value: form.object.image.identifier %>
-        <%= form.file_field :image, class: 'form-control'%>
-        
+        <% @product.images.each do |image| %>
+          <%= form.hidden_field :images, multiple: true, value: image.identifier %>
+        <% end %>
+        <%= form.file_field :images, multiple: true, class: 'form-control'%>
       </p>
 
       <p>

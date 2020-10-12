@@ -1,7 +1,10 @@
-<div class="card text-center mx-auto mt-5" style="width: 18rem;">
+<div class="card" style="width: 18rem;">
   <% @product_type.products.each do |product| %>
-    <div class="card">
-      <%= product.name %> 
+    <%= image_tag(product.images.first.url, class: 'card-img-top') if product.images? %>
+    <div class="card-body">
+      <h5 class="card-title"><%= product.name %></h5> 
+      <p class="card-text"><%= product.price %></p>
+      <%= link_to 'Quick View', product_path(product.id) %>
     </div>
   <% end %>
 </div>

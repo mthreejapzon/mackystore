@@ -13,6 +13,12 @@
 
   <body>
     <%= render 'shared/header' %>
-    <%= yield %>
+    <%= content_for :slider %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <%= render 'shared/footer'%>
   </body>
 </html>
