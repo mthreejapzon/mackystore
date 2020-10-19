@@ -1,7 +1,9 @@
 class CartController < ApplicationController
   def index
-    cart = Product.first
+    @carts = Product.all
 
-    render json: { cart: cart }
+    respond_to do |format|
+      format.js
+    end
   end
 end

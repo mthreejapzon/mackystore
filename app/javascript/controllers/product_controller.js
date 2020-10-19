@@ -15,7 +15,7 @@ export default class extends Controller {
         url: `/products/${productId}/size/${sizeId}/quantity`
       }).done(function(data) {
         $('.js-select-container').html('');
-        $('.js-quantity-text').text(data.quantity);
+        $('.js-quantity-text').text(data.quantity || 0);
         let $content;
 
         if (data.quantity > 0) {
@@ -27,18 +27,6 @@ export default class extends Controller {
         }
 
         $content.appendTo('.js-select-container')
-      });
-    });
-
-    const $cartBtn = $(this.cartBtnTarget);
-
-    $cartBtn.on('click', function() {
-
-      $.ajax({
-        url: '/cart/index'
-      }).done(function(data){
-        console.log(data.cart)
-        alert(data.cart.name)
       });
     });
   }

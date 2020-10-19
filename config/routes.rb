@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'products/:id/size/:product_size_id/quantity', to: 'products#fetch_quantity', as: 'product_size_quantity'
   get 'cart/index', to: 'cart#index', as: 'cart'
+  get 'cart/show', to: 'cart#show', as: 'cart_show'
   get 'shop', to: 'shop#index', as: 'shop'
   get 'blog', to: 'blog#index', as: 'blog'
   get 'shop/:name',to: 'shop#show', as: 'shop_show'

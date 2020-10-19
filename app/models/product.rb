@@ -7,4 +7,7 @@ class Product < ApplicationRecord
   belongs_to :product_type
   has_many :product_product_sizes
   has_many :product_sizes, through: :product_product_sizes
+
+  has_many :cart_products
+  has_many :carts, through: :cart_products
 end
