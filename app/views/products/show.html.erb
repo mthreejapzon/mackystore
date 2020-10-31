@@ -18,27 +18,30 @@
   </div>
 
   <div class="col ml-5">
-    <small>PRODUCT BRAND</small>
-    <h1><%= @product.name %></h1>
-    <p><%= number_to_currency(@product.price, unit: "₱ ") %></p>
-    <p>
-      <%= label_tag :size %>
-      <%= collection_select :product_size, :id, @product.product_sizes, :id, :name, { include_blank: false }, { class: "form-control", data: { target: "product.sizeField" }, product: @product.id } %>
-    </p>
-
-    <div class="js-qty-container">
-      <%= label_tag :quantity %>
-      <div class="js-select-container">
-        <% if @initial_quantity && @initial_quantity > 0 %>
-          <%= collection_select :product_size, :qty, [*1..@initial_quantity], :to_s, :to_s, { include_blank: false }, { class: "form-control js-select" } %>
-        <% end %>
-      </div>
-
-      <p class="small">
-        <span class="js-quantity-text"><%= @initial_quantity || 0 %></span> stocks left for this size
+    <%= form_with url: add_to_cart_path, scope: :cart_product, remote: true do |form| %>
+      <small>PRODUCT BRAND</small>
+      <h1><%= @product.name %></h1>
+      <p><%= number_to_currency(@product.price, unit: "₱ ") %></p>
+      <%= form.hidden_field :product_id, value: @product.id %>
+      <p>
+        <%= label_tag :size %>
+        <%= form.collection_select :product_size_id, @product.product_sizes, :id, :name, { include_blank: false }, { class: "form-control", data: { target: "product.sizeField" }, product: @product.id } %>
       </p>
 
-      <%= link_to "Add to Cart", cart_path, class: "btn btn-success", remote: true %>
-    </div>
+      <div class="js-qty-container">
+        <%= label_tag :quantity %>
+        <div class="js-select-container">
+          <% if @initial_quantity && @initial_quantity > 0 %>
+            <%= form.collection_select :quantity, [*1..@initial_quantity], :to_s, :to_s, { include_blank: false }, { class: "form-control js-select" } %>
+          <% end %>
+        </div>
+
+        <p class="small">
+          <span class="js-quantity-text"><%= @initial_quantity || 0 %></span> stocks left for this size
+        </p>
+
+        <%= form.submit "Add to Cart", class: "btn btn-success" %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -4,6 +4,7 @@ class CreateCartProducts < ActiveRecord::Migration[6.0]
       t.belongs_to :cart
       t.belongs_to :product
       t.integer :quantity
+      t.belongs_to :product_size
 
       t.timestamps
     end

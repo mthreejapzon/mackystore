@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <span class="col-sm"><strong>CART ID: </strong><%= @cart.id %></span>
+        <span class="col-sm"><strong>TOTAL PRICE: </strong><%= @cart.total_price %></span>
+        <span class="col-sm"><strong>DATE CREATED: </strong><%= @cart.created_at.strftime('%b %d, %Y, %l:%M %p') %></span>
+      </div>
+    </div>
+  </div>
+
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>PRODUCT</th>
+        <th>PRICE</th>
+        <th>QUANTITY</th>
+        <th>SUBTOTAL</th>
+      </tr>
+
+      <% @cart.cart_products.each do |cart_product| %>
+        <tr>
+          <td><%= cart_product.product.id %></td>
+          <td><%= cart_product.product.name %></td>
+          <td><%= cart_product.product.price %></td>
+          <td><%= cart_product.quantity %></td>
+          <td><%= cart_product.subtotal %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to 'Back', admin_carts_path, class: 'btn btn-primary'%>
+  </div>

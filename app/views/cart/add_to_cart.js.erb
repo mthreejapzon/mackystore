@@ -1,0 +1,5 @@
+<% if @cart_product.errors.messages.blank? %>
+  alert("Successfully added <%= pluralize(@cart_product.quantity, @cart_product.product.name) %> to cart!");
+<% else %>
+  alert("Something went wrong. Item was not successfully added to cart.");
+<% end %>

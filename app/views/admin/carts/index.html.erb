@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <table class="table">
+    <tr>
+      <th>CART ID</th>
+      <th>DATE CREATED</th>
+      <th>NUMBER OF PRODUCTS</th>
+      <th>TOTAL PRICE </th>
+    </tr>
+
+    <% @carts.each do |cart|%>
+      <tr>
+        <td><%= cart.id %></td>
+        <td><%= cart.created_at.strftime('%b %d, %Y, %l:%M %p') %></td>
+        <td><%= cart.cart_products.count %></td>
+        <td><%= number_to_currency(cart.total_price, unit: "₱ ")%></td>
+        <td>
+          <%= link_to 'Show', admin_cart_path(cart), class: 'btn btn-primary'%>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -40,10 +40,12 @@ ActiveRecord::Schema.define(version: 2020_10_17_111029) do
     t.bigint "cart_id"
     t.bigint "product_id"
     t.integer "quantity"
+    t.bigint "product_size_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cart_id"], name: "index_cart_products_on_cart_id"
     t.index ["product_id"], name: "index_cart_products_on_product_id"
+    t.index ["product_size_id"], name: "index_cart_products_on_product_size_id"
   end
 
   create_table "carts", force: :cascade do |t|

@@ -1,1 +1,36 @@
-<h1>teast</h1>
+<% if @cart %>
+  <h1>My Cart</h1>
+  <br />
+  <br />
+  <table class="table">
+    <tr>
+      <th>Product Name</th>
+      <th>Size</th> 
+      <th>Price</th>   
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+  
+    <% @cart.cart_products.each do |cart_product| %>
+      <tr>
+        <td><%= cart_product.product_name %></td>
+        <td><%= cart_product.size_name %></td>
+        <td><%= number_to_currency(cart_product.price , unit: "₱ ") %></td>
+        <td><%= cart_product.quantity %></td>
+        <td><%= number_to_currency(cart_product.subtotal, unit: "₱ ") %></td>
+      </tr>
+    <% end %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>TOTAL :</td>
+        <td><%= number_to_currency(@cart.total_price, unit: "₱ ") %></td>
+      </tr>
+  </table>
+<% else %>
+  You currently have no cart. Add product to cart to begin.
+<% end %>
+
+
+
